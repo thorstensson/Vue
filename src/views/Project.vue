@@ -1,0 +1,156 @@
+<template>
+  <div v-if="project">
+    <section class="hero">
+      <div class="hero-body">
+        <div class="container"         data-aos="zoom-in"
+                  data-aos-delay="300">
+          <p class="title is-size-4-mobile is-size-3-tablet">
+            {{ project.title }}
+          </p>
+          <h2 class="subtitle is-size-2-mobile is-size-1-tablet">
+            {{ project.snippet }}
+          </h2>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="columns">
+          <div class="column is-two-fifths" data-aos="fade-in"
+                  data-aos-delay="300">
+            <vue-simple-markdown :source="project.body"></vue-simple-markdown>
+          </div>
+
+          <div class="column">
+            <div class="columns is-multiline is-centered">
+              <div
+                class="column is-full"
+                v-for="(image, id) in project.images.slice(1)"
+                v-bind:key="id"
+              >
+                <div
+                  v-if="
+                    image.url.includes('.jpg') || image.url.includes('.png')
+                  "
+                          data-aos="fade-in"
+                  data-aos-delay="300"
+                >
+                  <img :src="image.url" />
+                </div>
+
+                <div
+                  v-if="image.url.includes('.mp4')"
+                  data-aos="fade-in"
+                  data-aos-delay="300"
+                >
+                  <video
+                    autoplay
+                    id="vid"
+                    width
+                    :src="image.url"
+                    type="video/mp4"
+                    @loadedmetadata="getVideoDimensions"
+                    @ended="onEnd()"
+                  ></video>
+
+                  <div id="video_controls_bar">
+                    <button
+                      id="playpausebtn"
+                      @click="playPause(this, 'vid')"
+                    ></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</template>
+
+<script>
+import ProjectsService from "@/services/ProjectsService";
+export default {
+  name: "project",
+  data() {
+    return {
+      airtableResponse: [],
+    };
+  },
+
+  mounted: function () {
+    let self = this;
+    async function getProject() {
+      try {
+        const response = await ProjectsService.getProject(
+          self.$route.params.slug
+        );
+        self.airtableResponse = response.data.records;
+      } catch (err) {
+        console.log(err);
+      }
+    }
+    setTimeout(getProject, 500);
+  },
+
+  computed: {
+    project() {
+      let self = this;
+      if (self.airtableResponse[0]) {
+        let thisProject = {
+          title: self.airtableResponse[0].fields.Title,
+          snippet: self.airtableResponse[0].fields.Excerpt,
+          images: self.airtableResponse[0].fields.Image,
+          types: self.airtableResponse[0].fields.type.toString(),
+          body: self.airtableResponse[0].fields.Body,
+          id: self.airtableResponse[0].slug,
+        };
+
+        return thisProject;
+      }
+    },
+  },
+
+  methods: {
+    log(item) {
+      console.log(item);
+    },
+
+    getVideoDimensions(e) {
+      document.querySelectorAll("video").forEach((vid) => {
+        vid.height = e.target.videoHeight;
+        vid.width = e.target.videoWidth;
+        vid.pause();
+      });
+    },
+
+    playPause(btn, vid) {
+      let vidd = document.getElementById("vid");
+      let playbtn = document.getElementById("playpausebtn");
+
+      if (vidd.paused) {
+        vidd.play();
+        playbtn.innerHTML = " ";
+        playbtn.style.background =
+          "url(https://image.flaticon.com/icons/svg/189/189889.svg) no-repeat";
+      } else {
+        vidd.pause();
+        playbtn.innerHTML = " ";
+        playbtn.style.background =
+          "url(https://image.flaticon.com/icons/svg/148/148744.svg) no-repeat";
+      }
+    },
+
+    onEnd() {
+      let vidd = document.getElementById("vid");
+      let playbtn = document.getElementById("playpausebtn");
+      vidd.pause();
+      playbtn.innerHTML = " ";
+      playbtn.style.background =
+        "url(https://image.flaticon.com/icons/svg/148/148744.svg) no-repeat";
+    },
+  },
+};
+</script>
