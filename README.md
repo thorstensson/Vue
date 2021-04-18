@@ -18,9 +18,9 @@ npm run serve
 ```
 
 ### Compile to dist for release
-
+```
 npm run build
-
+```
 
 
 
