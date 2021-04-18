@@ -1,6 +1,3 @@
-
-![Ad Badge](https://https://img.shields.io/badge/vue-portfolio-yellowgreen)
-
 # Hello. :smiling_imp:
 
 
