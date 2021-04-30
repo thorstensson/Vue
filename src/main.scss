@@ -14,20 +14,21 @@
 $alpha-color: #fefefe;
 
 // Generic palette (no override)
-$gamma-color: #e6d5b3;
-$delta-color: #119da4;
-$epsilon-color: #19647e;
-$zeta-color: #4b3f72;
-$eta-color: #1f2041;
-$theta-color: #0a0a0a;
+$gamma-color: #ffffff;
+$delta-color: #e6e8e6;
+$epsilon-color: #ced0ce;
+$zeta-color: #e94f37;
+$eta-color: #191919;
+$theta-color: #0f1108;
 
 // Overrides of bulma colors
 $button-background-color: $eta-color;
 $button-color: $alpha-color;
-$button-hover-color: $delta-color;
+$button-hover-color: $zeta-color;
+$navbar-background-color: $theta-color;
 $navbar-item-hover-background-color: $theta-color;
 $navbar-item-color: $alpha-color;
-$navbar-item-hover-color: $delta-color;
+$navbar-item-hover-color: $zeta-color;
 $navbar-burger-color: $delta-color;
 $body-background-color: $theta-color;
 $body-color: $alpha-color;
@@ -105,10 +106,22 @@ $footer-padding: 1rem 1.5rem 1rem;
   color: $alpha-color;
 }
 
-.markdown-body h3 {
+.markdown-body h3,
+.markdown-body h3 a {
   @extend .title;
   @extend .is-4;
   @extend .is-weight-450;
+}
+
+.markdown-body h3 a,
+li a {
+  text-decoration: underline;
+}
+
+.markdown-body i {
+  color:$epsilon-color;
+  font-size:12px;
+
 }
 
 h1,
@@ -120,7 +133,7 @@ h4 {
 }
 
 .title {
-  color: $delta-color;
+  color: $zeta-color;
   font-weight: 400;
 }
 
@@ -132,14 +145,14 @@ h4 {
 
 .name-title {
   font-family: "Harabara", sans-serif;
-  color: #fefefe;
+  color: $alpha-color;
   margin-top: 4px;
   font-size: 20px !important;
   letter-spacing: 1px;
 }
 
 .router-link-active {
-  color: $delta-color !important;
+  color: $zeta-color !important;
 }
 
 // ==========================================================================
@@ -154,6 +167,10 @@ h4 {
   margin-bottom: 0.5rem !important;
 }
 
+.icon {
+  margin-left: 7px;
+}
+
 // ==========================================================================
 // Navbar props
 
@@ -166,13 +183,8 @@ div#navbarBasicExample {
   padding-left: 20px;
 }
 
-.navbar.is-blacked {
-  background-color: $theta-color;
-  color: white;
-}
-
 .navbar-burger:hover {
-  color: $delta-color;
+  color: $zeta-color;
 }
 
 body.has-navbar-fixed-top {
@@ -198,10 +210,15 @@ body.has-navbar-fixed-top {
 // ==========================================================================
 
 .footer {
-  background-color: #1f2041;
-  color: #fefefe;
+  background-color: $eta-color;
+  color: $alpha-color;
   font-family: "Harabara";
   letter-spacing: 1px;
+  padding: 1.1rem 1.5rem 0.9rem;
+}
+
+.footer a {
+  color: $epsilon-color;
 }
 
 // ==========================================================================
@@ -262,7 +279,7 @@ canvas {
   }
 }
 
-@media screen and (min-width: 1025px) {
+@media screen and (min-width: 1024px) {
   .navbar-item.is-hoverable:hover .navbar-dropdown {
     display: block !important;
   }
@@ -272,10 +289,16 @@ canvas {
   .name-title {
     margin-top: 0px;
   }
-  
+  .is-size-1-desktop {
+    font-size: 3.7rem !important;
+  }
 }
 
 @media screen and (max-width: 768px) {
+  .hero-body {
+    padding: 2rem 1.5rem !important;
+  }
+
   .textarea:not([rows]) {
     max-height: 400px;
     min-height: 80px;
@@ -284,6 +307,12 @@ canvas {
   .form-mobile {
     padding: 3rem 1.5rem;
     padding-top: 0;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .section.is-medium {
+    padding: 5rem 1.5rem;
   }
 }
 
@@ -345,7 +374,7 @@ a {
 }
 
 a:hover {
-  color: $gamma-color;
+  color: $zeta-color;
 }
 
 .box {
@@ -377,16 +406,33 @@ button {
 }
 
 button#playpausebtn {
-  background: url(https://image.flaticon.com/icons/svg/148/148744.svg) no-repeat;
-  width: 50px;
-  height: 50px;
-  position: relative;
+  background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pg0KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE5LjAuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPg0KPHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJDYXBhXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB2aWV3Qm94PSIwIDAgNDc3Ljg2NyA0NzcuODY3IiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCA0NzcuODY3IDQ3Ny44Njc7IiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxnPg0KCTxnPg0KCQk8cGF0aCBkPSJNMjM4LjkzMywwQzEwNi45NzQsMCwwLDEwNi45NzQsMCwyMzguOTMzczEwNi45NzQsMjM4LjkzMywyMzguOTMzLDIzOC45MzNzMjM4LjkzMy0xMDYuOTc0LDIzOC45MzMtMjM4LjkzMw0KCQkJQzQ3Ny43MjYsMTA3LjAzMywzNzAuODM0LDAuMTQxLDIzOC45MzMsMHogTTMzOS41NTcsMjQ2LjU0NmMtMS42NTQsMy4zMTgtNC4zNDMsNi4wMDgtNy42NjIsNy42NjJ2MC4wODVMMTk1LjM2MiwzMjIuNTYNCgkJCWMtOC40MzIsNC4yMTMtMTguNjgyLDAuNzk0LTIyLjg5Ni03LjYzOGMtMS4xOTgtMi4zOTctMS44MTUtNS4wNDMtMS44LTcuNzIyVjE3MC42NjdjLTAuMDA0LTkuNDI2LDcuNjMzLTE3LjA3LDE3LjA1OS0xNy4wNzUNCgkJCWMyLjY1MS0wLjAwMSw1LjI2NiwwLjYxNSw3LjYzNywxLjhsMTM2LjUzMyw2OC4yNjdDMzQwLjMzMSwyMjcuODYzLDM0My43NjIsMjM4LjExLDMzOS41NTcsMjQ2LjU0NnoiLz4NCgk8L2c+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8L3N2Zz4NCg==);
+  width: 80px;
+  height: 80px;
+  position: absolute;
   bottom: 70px;
   margin: 0 auto;
   opacity: 0.8;
+
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 #video_controls_bar {
   display: flex;
   justify-content: left; //horizontal centering
+}
+
+// ==========================================================================
+// ANIMATE.CSS CONFIG
+// ==========================================================================
+
+:root {
+  --animate-duration: 400ms;
+  --animate-delay: 0.9s;
+}
+
+li:not(:last-child) {
+  margin-bottom: 15px;
 }

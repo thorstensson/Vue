@@ -2,12 +2,11 @@
   <div v-if="project">
     <section class="hero">
       <div class="hero-body">
-        <div class="container"         data-aos="zoom-in"
-                  data-aos-delay="300">
-          <p class="title is-size-4-mobile is-size-3-tablet">
+        <div class="container" data-aos="zoom-in" data-aos-delay="300">
+          <p class="title is-size-4-mobile is-size-3-tablet is-size-2-desktop">
             {{ project.title }}
           </p>
-          <h2 class="subtitle is-size-2-mobile is-size-1-tablet">
+          <h2 class="subtitle is-size-2-mobile is-size-1-tablet is-size-1-desktop">
             {{ project.snippet }}
           </h2>
         </div>
@@ -17,8 +16,11 @@
     <section class="section">
       <div class="container">
         <div class="columns">
-          <div class="column is-two-fifths" data-aos="fade-in"
-                  data-aos-delay="300">
+          <div
+            class="column is-two-fifths"
+            data-aos="fade-in"
+            data-aos-delay="300"
+          >
             <vue-simple-markdown :source="project.body"></vue-simple-markdown>
           </div>
 
@@ -33,7 +35,7 @@
                   v-if="
                     image.url.includes('.jpg') || image.url.includes('.png')
                   "
-                          data-aos="fade-in"
+                  data-aos="fade-in"
                   data-aos-delay="300"
                 >
                   <img :src="image.url" />
@@ -57,7 +59,7 @@
                   <div id="video_controls_bar">
                     <button
                       id="playpausebtn"
-                      @click="playPause(this, 'vid')"
+                      @click="onPlay(this, 'vid')"
                     ></button>
                   </div>
                 </div>
@@ -80,13 +82,15 @@ export default {
     };
   },
 
-  mounted: function () {
+  mounted () {
     let self = this;
     async function getProject() {
       try {
+        // Call method that filters based on slug
         const response = await ProjectsService.getProject(
-          self.$route.params.slug
+          self.$route.params.slug 
         );
+        // One project 
         self.airtableResponse = response.data.records;
       } catch (err) {
         console.log(err);
@@ -103,7 +107,7 @@ export default {
           title: self.airtableResponse[0].fields.Title,
           snippet: self.airtableResponse[0].fields.Excerpt,
           images: self.airtableResponse[0].fields.Image,
-          types: self.airtableResponse[0].fields.type.toString(),
+          types: self.airtableResponse[0].fields.type,
           body: self.airtableResponse[0].fields.Body,
           id: self.airtableResponse[0].slug,
         };
@@ -126,21 +130,15 @@ export default {
       });
     },
 
-    playPause(btn, vid) {
+    onPlay(btn, vid) {
       let vidd = document.getElementById("vid");
       let playbtn = document.getElementById("playpausebtn");
 
       if (vidd.paused) {
         vidd.play();
         playbtn.innerHTML = " ";
-        playbtn.style.background =
-          "url(https://image.flaticon.com/icons/svg/189/189889.svg) no-repeat";
-      } else {
-        vidd.pause();
-        playbtn.innerHTML = " ";
-        playbtn.style.background =
-          "url(https://image.flaticon.com/icons/svg/148/148744.svg) no-repeat";
-      }
+        playbtn.style.visibility = "hidden";
+      } 
     },
 
     onEnd() {
@@ -148,8 +146,7 @@ export default {
       let playbtn = document.getElementById("playpausebtn");
       vidd.pause();
       playbtn.innerHTML = " ";
-      playbtn.style.background =
-        "url(https://image.flaticon.com/icons/svg/148/148744.svg) no-repeat";
+        playbtn.style.visibility = "visible";
     },
   },
 };

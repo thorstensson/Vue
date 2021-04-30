@@ -4,13 +4,13 @@
       <meta name="viewport" content="width=device-width, initial-scale=1" />
 
       <nav
-        class="navbar is-blacked is-spaced is-fixed-top"
+        class="navbar is-spaced is-fixed-top"
         role="navigation"
         aria-label="main navigation"
       >
         <div class="navbar-brand">
           <router-link class="" to="/">
-            <p class="navbar-item is-size-6 name-title" href="#">
+            <p class="navbar-item is-size-6 name-title delta-color" href="#">
               Thomas Thorstensson
             </p>
           </router-link>
@@ -33,20 +33,18 @@
 
         <div
           id="navbarBasicExample"
-          class="navbar-menu has-background-black"
+          class="navbar-menu"
           :class="{ 'is-active': showNav }"
         >
           <div class="navbar-start"></div>
 
           <div class="navbar-end">
-            <router-link to="/" exact class="navbar-item"> Home </router-link>
-            <router-link to="/about" class="navbar-item"> About </router-link>
-            <router-link to="/projects" class="navbar-item">
-              Projects
-            </router-link>
-            <router-link to="/contact" class="navbar-item">
-              Contact
-            </router-link>
+            <router-link to="/" exact class="navbar-item">Home</router-link>
+            <router-link to="/about" class="navbar-item">About</router-link>
+            <router-link to="/projects" class="navbar-item"
+              >Projects</router-link
+            >
+            <router-link to="/contact" class="navbar-item">Contact</router-link>
           </div>
         </div>
       </nav>
@@ -60,28 +58,41 @@
       </transition>
     </div>
 
-    <footer class="footer" data-aos="fade-in" data-aos-anchor-placement="top-bottom">
-      <div class="content has-text-centered">
-        <span class="is-size-7 has-text-weight-medium"
-          >hello@thomasthorstensson.net</span
-        ><br />
+    <footer
+      class="footer"
+      data-aos="fade-in"
+      data-aos-anchor-placement="top-bottom"
+    >
+      <div class="content has-text-right">
         <span class="icon">
           <a href="https://linkedin.com/in/thomasthorstensson" target="_blank"
-            ><i class="fab fa-linkedin-in fa-sm mr-4"></i
+            ><i class="fab fa-linkedin fa-lg"></i
           ></a>
         </span>
         <span class="icon">
           <a href="https://dribbble.com/ThomasThorstensson" target="_blank"
-            ><i class="fab fa-dribbble sm-lg"></i
+            ><i class="fas fa-basketball-ball fa-lg"></i
           ></a>
         </span>
+        <span class="icon">
+          <a href="https://github.com/thorstensson" target="_blank"
+            ><i class="fab fa-github fa-lg"></i
+          ></a>
+        </span>
+        <span class="icon">
+          <a href="https://thomasthorstensson.photography" target="_blank"
+            ><i class="fab fa-wordpress fa-lg"></i
+          ></a>
+        </span><br />
+                <span class="is-size-7 has-text-weight-medium"
+          >hello@thomasthorstensson.net</span
+        ><br />
       </div>
     </footer>
   </div>
 </template>
 
 <script>
-
 export default {
   name: "App",
   data() {
@@ -90,14 +101,13 @@ export default {
     };
   },
 
-  mounted: function () {
+  mounted() {
     const links = document.querySelectorAll(".navbar-item");
 
     var vm = this;
     links.forEach((link) => {
       link.addEventListener("click", function (e) {
         e.stopImmediatePropagation();
-        console.log("GOT");
         document.getElementById("navbarBurger").classList.toggle("is-active");
         document
           .getElementById("navbarBasicExample")
@@ -107,21 +117,19 @@ export default {
     });
   },
 
-  created: function () {
+  created() {
     window.addEventListener("resize", this.listenToResize);
     this.listenToResize();
   },
 
   methods: {
-    listenToResize: function () {
+    listenToResize() {
       let vh = window.innerHeight * 0.01;
       // Then we set the value in the --vh custom property to the root of the document
       document.documentElement.style.setProperty("--vh", `${vh}px`);
     },
   },
-
 };
-
 </script>
 
 <style>

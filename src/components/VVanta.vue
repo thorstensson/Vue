@@ -1,5 +1,5 @@
 <template>
-  <v-vanta effect="topology" :options="options"></v-vanta>
+  <v-vanta effect="net" :options="options"></v-vanta>
 </template>
  
 <script>
@@ -11,10 +11,11 @@ export default {
   data() {
     return {
       options: {
-        backgroundColor: 0x0a0a0a,
-        color: 0x4b3f72,
+        backgroundColor: 0x0F1108,
+        color: 0x505350,
         minHeight: 200.0,
         minWidth: 200.0,
+        opacity:.1,
         p5: p5,
       },
     };
