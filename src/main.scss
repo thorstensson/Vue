@@ -113,15 +113,15 @@ $footer-padding: 1rem 1.5rem 1rem;
   @extend .is-weight-450;
 }
 
-.markdown-body h3 a,
+.markdown-body h3 a, .markdown-body a,
 li a {
   text-decoration: underline;
+  color:$alpha-color;
 }
 
 .markdown-body i {
-  color:$epsilon-color;
-  font-size:12px;
-
+  color: $epsilon-color;
+  font-size: 12px;
 }
 
 h1,
@@ -146,8 +146,8 @@ h4 {
 .name-title {
   font-family: "Harabara", sans-serif;
   color: $alpha-color;
-  margin-top: 4px;
-  font-size: 20px !important;
+  margin-top: 6px;
+  font-size: 18px !important;
   letter-spacing: 1px;
 }
 
@@ -173,6 +173,13 @@ h4 {
 
 // ==========================================================================
 // Navbar props
+
+nav {
+  -webkit-user-select:none;
+     -moz-user-select:none;
+      -ms-user-select:none;
+          user-select:none;
+}
 
 div#navbarBasicExample {
   font-size: 15px;
@@ -211,7 +218,7 @@ body.has-navbar-fixed-top {
 
 .footer {
   background-color: $eta-color;
-  color: $alpha-color;
+  color: $epsilon-color;
   font-family: "Harabara";
   letter-spacing: 1px;
   padding: 1.1rem 1.5rem 0.9rem;
@@ -266,6 +273,10 @@ canvas {
   min-height: 100%;
 }
 
+.cssnectar {
+  display:none;
+}
+
 #vanta-1 {
   min-height: calc(var(--vh, 1vh) * 100 - 80px);
 }
@@ -277,6 +288,10 @@ canvas {
   .rwd-break {
     display: none;
   }
+
+  .cssnectar {
+    display:block;
+  }
 }
 
 @media screen and (min-width: 1024px) {
@@ -287,7 +302,7 @@ canvas {
     display: none;
   }
   .name-title {
-    margin-top: 0px;
+    margin-top:2px;
   }
   .is-size-1-desktop {
     font-size: 3.7rem !important;

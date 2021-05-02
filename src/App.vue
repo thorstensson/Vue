@@ -10,7 +10,7 @@
       >
         <div class="navbar-brand">
           <router-link class="" to="/">
-            <p class="navbar-item is-size-6 name-title delta-color" href="#">
+            <p class="navbar-item name-title epsilon-color " href="#">
               Thomas Thorstensson
             </p>
           </router-link>
@@ -21,7 +21,7 @@
             class="navbar-burger burger"
             aria-label="menu"
             aria-expanded="false"
-            data-target="navbarBasicExample"
+            data-target="navbarBasicExample" 
             :class="{ 'is-active': showNav }"
             @click="showNav = !showNav"
           >
@@ -56,6 +56,7 @@
       >
         <router-view></router-view>
       </transition>
+
     </div>
 
     <footer
@@ -63,7 +64,9 @@
       data-aos="fade-in"
       data-aos-anchor-placement="top-bottom"
     >
+
       <div class="content has-text-right">
+
         <span class="icon">
           <a href="https://linkedin.com/in/thomasthorstensson" target="_blank"
             ><i class="fab fa-linkedin fa-lg"></i
@@ -82,9 +85,9 @@
         <span class="icon">
           <a href="https://thomasthorstensson.photography" target="_blank"
             ><i class="fab fa-wordpress fa-lg"></i
-          ></a>
-        </span><br />
-                <span class="is-size-7 has-text-weight-medium"
+          ></a> </span
+        ><br />
+        <span class="is-size-7 has-text-weight-medium"
           >hello@thomasthorstensson.net</span
         ><br />
       </div>
@@ -107,12 +110,10 @@ export default {
     var vm = this;
     links.forEach((link) => {
       link.addEventListener("click", function (e) {
-        e.stopImmediatePropagation();
-        document.getElementById("navbarBurger").classList.toggle("is-active");
-        document
-          .getElementById("navbarBasicExample")
-          .classList.toggle("is-active");
+
         vm.showNav = false;
+
+        console.log("CLOSE")
       });
     });
   },
@@ -124,6 +125,7 @@ export default {
 
   methods: {
     listenToResize() {
+
       let vh = window.innerHeight * 0.01;
       // Then we set the value in the --vh custom property to the root of the document
       document.documentElement.style.setProperty("--vh", `${vh}px`);

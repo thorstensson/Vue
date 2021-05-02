@@ -20,13 +20,13 @@
         <div class="columns is-left">
           <div class="column is-half">
             <p>
-              Born in Tanzania and raised in Sweden; as an 80's kid I grew up
-              playing Commodore C64 games on tape drive. Somehow landed a
+              Born in Tanzania and raised in Sweden; as an 80s kid I grew up
+              playing Commodore C64 games on tape drive. Add books, and a
               Master's in Philosophy. Read a lot of Asimov and Borges. I've now
               worked for some plus ten years within UK and Nordic agencies
               across the spectrum from non-profit to gaming to publishing. Come
-              2021, I would like to find a permanent role where I can find
-              synergy with my team colleagues, learn and contribute.
+              2021 and onwards, my aim is to find a good permanent role where I
+              can collaborate with team colleagues, learn and contribute.
             </p>
           </div>
         </div>
@@ -42,7 +42,7 @@
       <div class="container">
         <div class="columns is-centered">
           <div class="column is-one-fifth">
-            <div class="box" data-aos="fade-in">
+            <div class="box">
               <figure class="image is-square">
                 <img src="../assets/js.svg" alt="Kiwi standing on oval" />
               </figure>
@@ -120,7 +120,7 @@
                 <i>Work-Life balance:</i> To me it is important to unplug. This
                 can be with a book or with a walk or a brunch meetup. Life comes
                 first, and no ideas come without living life and getting out
-                there.
+                there anyhow.
               </li>
               <li>
                 <i>Creativity:</i> My "second life" is photography. You can find
