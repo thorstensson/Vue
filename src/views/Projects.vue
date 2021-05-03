@@ -3,9 +3,14 @@
     <section class="hero">
       <div class="hero-body">
         <div class="container">
-          <p class="title is-size-4-mobile is-size-3-tablet is-size-2-desktop">Projects</p>
-          <h2 class="subtitle is-size-2-mobile is-size-1-tablet is-size-1-desktop">
-            Current<br class="rwd-break" /> & past work.
+          <p class="title is-size-4-mobile is-size-3-tablet is-size-2-desktop">
+            Projects
+          </p>
+          <h2
+            class="subtitle is-size-2-mobile is-size-1-tablet is-size-1-desktop"
+          >
+            Current<br class="rwd-break" />
+            & past work.
           </h2>
         </div>
       </div>

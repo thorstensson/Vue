@@ -113,10 +113,11 @@ $footer-padding: 1rem 1.5rem 1rem;
   @extend .is-weight-450;
 }
 
-.markdown-body h3 a, .markdown-body a,
+.markdown-body h3 a,
+.markdown-body a,
 li a {
   text-decoration: underline;
-  color:$alpha-color;
+  color: $alpha-color;
 }
 
 .markdown-body i {
@@ -175,10 +176,10 @@ h4 {
 // Navbar props
 
 nav {
-  -webkit-user-select:none;
-     -moz-user-select:none;
-      -ms-user-select:none;
-          user-select:none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 div#navbarBasicExample {
@@ -274,7 +275,7 @@ canvas {
 }
 
 .cssnectar {
-  display:none;
+  display: none;
 }
 
 #vanta-1 {
@@ -290,7 +291,7 @@ canvas {
   }
 
   .cssnectar {
-    display:block;
+    display: block;
   }
 }
 
@@ -302,7 +303,7 @@ canvas {
     display: none;
   }
   .name-title {
-    margin-top:2px;
+    margin-top: 2px;
   }
   .is-size-1-desktop {
     font-size: 3.7rem !important;
@@ -428,7 +429,7 @@ button#playpausebtn {
   bottom: 70px;
   margin: 0 auto;
   opacity: 0.8;
-
+  background-color: white;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);

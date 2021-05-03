@@ -6,7 +6,9 @@
           <p class="title is-size-4-mobile is-size-3-tablet is-size-2-desktop">
             {{ project.title }}
           </p>
-          <h2 class="subtitle is-size-2-mobile is-size-1-tablet is-size-1-desktop">
+          <h2
+            class="subtitle is-size-2-mobile is-size-1-tablet is-size-1-desktop"
+          >
             {{ project.snippet }}
           </h2>
         </div>
@@ -48,18 +50,17 @@
                 >
                   <video
                     autoplay
-                    id="vid"
-                    width
+                    v-bind:id="id"
                     :src="image.url"
                     type="video/mp4"
                     @loadedmetadata="getVideoDimensions"
-                    @ended="onEnd()"
+                    @ended="onEnd(id)"
                   ></video>
 
                   <div id="video_controls_bar">
                     <button
                       id="playpausebtn"
-                      @click="onPlay(this, 'vid')"
+                      @click="onPlay($event, id)"
                     ></button>
                   </div>
                 </div>
@@ -72,6 +73,7 @@
   </div>
 </template>
 
+
 <script>
 import ProjectsService from "@/services/ProjectsService";
 export default {
@@ -82,15 +84,13 @@ export default {
     };
   },
 
-  mounted () {
+  mounted() {
     let self = this;
     async function getProject() {
       try {
-        // Call method that filters based on slug
         const response = await ProjectsService.getProject(
-          self.$route.params.slug 
+          self.$route.params.slug
         );
-        // One project 
         self.airtableResponse = response.data.records;
       } catch (err) {
         console.log(err);
@@ -130,23 +130,26 @@ export default {
       });
     },
 
-    onPlay(btn, vid) {
-      let vidd = document.getElementById("vid");
-      let playbtn = document.getElementById("playpausebtn");
+    onPlay(btn, id) {
+      console.log(btn.currentTarget.id, id);
+
+      let vidd = document.getElementById(id);
+      let playbtn = btn.currentTarget;
+
+      vidd.btn = playbtn;
 
       if (vidd.paused) {
         vidd.play();
         playbtn.innerHTML = " ";
         playbtn.style.visibility = "hidden";
-      } 
+      }
     },
 
-    onEnd() {
-      let vidd = document.getElementById("vid");
-      let playbtn = document.getElementById("playpausebtn");
+    onEnd(id) {
+      let vidd = document.getElementById(id);
       vidd.pause();
-      playbtn.innerHTML = " ";
-        playbtn.style.visibility = "visible";
+      vidd.btn.innerHTML = " ";
+      vidd.btn.style.visibility = "visible";
     },
   },
 };
