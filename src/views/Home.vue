@@ -6,33 +6,34 @@
       <div class="hero-body">
         <div class="container container-home">
           <p
-            class="title is-3 is-size-4-mobile is-size-3-tablet is-size-2-desktop"
+            class="title is-3 is-size-3-mobile is-size-3-tablet is-size-2-desktop"
           >
             Hi, I'm Thomas
           </p>
           <h2
-            class="subtitle is-size-2-mobile is-size-1-tablet is-size-1-desktop"
+            class="subtitle is-size-1-mobile is-size-1-tablet is-size-1-desktop"
           >
             A <del>freelance</del><br />Developer<br class="rwd-break" />
             & Designer<br />
             from an island.
           </h2>
 
-          <a class="cssnectar"
+          <a
             href="https://www.cssnectar.com/"
             title="CSS Nectar - Site of the Day"
             style="
               width: 60px;
               height: 60px;
               position: fixed;
-
               z-index: 99999;
               text-indent: -9999px;
-              background: url(https://cssnectar.com/ribbons/nominee-light.png)
+              background: url(https://cssnectar.com/ribbons/site-of-the-day-light.png)
                 no-repeat;
             "
             target="_blank"
-          ></a>
+            >CSS Nectar Web Design Gallery</a
+          >
+          
         </div>
       </div>
     </div>
